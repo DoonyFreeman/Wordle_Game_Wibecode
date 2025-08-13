@@ -1,0 +1,223 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f6f6f6;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container, .game-container {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.creator {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#word-input {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #d3d6da;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#create-game, #copy-link {
+    padding: 12px;
+    background-color: #6aaa64;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#create-game:hover, #copy-link:hover {
+    background-color: #5d9957;
+}
+
+#game-link {
+    margin-top: 20px;
+}
+
+#link-output {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.hidden {
+    display: none;
+}
+
+#game-board {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tile {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    border: 2px solid #d3d6da;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.tile[data-state="empty"] {
+    background-color: white;
+    color: black;
+    border: 2px solid #d3d6da;
+}
+
+.tile[data-state="tbd"] {
+    background-color: white;
+    color: black;
+    border: 2px solid #878a8c;
+}
+
+.tile[data-state="correct"] {
+    background-color: #6aaa64;
+    border-color: #6aaa64;
+}
+
+.tile[data-state="present"] {
+    background-color: #c9b458;
+    border-color: #c9b458;
+}
+
+.tile[data-state="absent"] {
+    background-color: #787c7e;
+    border-color: #787c7e;
+}
+
+#keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.key {
+    height: 58px;
+    min-width: 35px;
+    border: none;
+    border-radius: 4px;
+    background-color: #d3d6da;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.key.wide {
+    min-width: 60px;
+    font-size: 14px;
+}
+
+.key[data-state="correct"] {
+    background-color: #6aaa64;
+    color: white;
+}
+
+.key[data-state="present"] {
+    background-color: #c9b458;
+    color: white;
+}
+
+.key[data-state="absent"] {
+    background-color: #787c7e;
+    color: white;
+}
+
+#message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    min-height: 24px;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+@keyframes tileBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.tile-animation {
+    animation: tileBounce 0.3s ease;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    opacity: 0.8;
+    border-radius: 50%;
+    animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(1000px) rotate(360deg); opacity: 0; }
+}
+
+.victory-animation {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
